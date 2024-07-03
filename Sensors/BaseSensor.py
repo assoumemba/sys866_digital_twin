@@ -1,0 +1,6 @@
+class BaseSensor(object):
+    pass
+
+
+
+
