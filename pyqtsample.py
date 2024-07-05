@@ -71,6 +71,7 @@ timer.timeout.connect(update)
 timer.start(50)
 
 
+test = 0
 win.nextRow()
 
 p7 = win.addPlot(title="Filled plot, axis disabled")
