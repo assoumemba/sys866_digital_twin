@@ -42,8 +42,10 @@
     <Compile Include="Actuators\BaseActuator.py" />
     <Compile Include="DtMain.py" />
     <Compile Include="DT\BaseDt.py" />
+    <Compile Include="pyqtsample.py" />
     <Compile Include="Sensors\BaseSensor.py" />
     <Compile Include="Visualization\BaseUI.py" />
+    <Compile Include="Visualization\DtMainWindow.py" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="requirements.txt" />
