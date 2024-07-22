@@ -17,6 +17,9 @@ from Visualization.DtMainWindow import Ui_MainWindow
 import pyqtgraph as pg
 from PyQt6 import QtWidgets
 
+from utils import ROOT_DIR
+
+
 
 # Enable antialiasing for prettier plots
 pg.setConfigOptions(antialias=True)
