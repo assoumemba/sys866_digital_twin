@@ -88,13 +88,13 @@
                 </font>
                </property>
                <property name="text">
-                <string>Settings</string>
+                <string>Parametres</string>
                </property>
                <property name="checkable">
                 <bool>true</bool>
                </property>
                <property name="checked">
-                <bool>true</bool>
+                <bool>false</bool>
                </property>
                <property name="autoExclusive">
                 <bool>true</bool>
@@ -127,7 +127,7 @@
                 </font>
                </property>
                <property name="text">
-                <string>Crops</string>
+                <string>Actionneurs</string>
                </property>
                <property name="checkable">
                 <bool>true</bool>
@@ -145,10 +145,10 @@
                 </font>
                </property>
                <property name="text">
-                <string>Sensors</string>
+                <string>Capteurs</string>
                </property>
                <property name="checkable">
-                <bool>false</bool>
+                <bool>true</bool>
                </property>
                <property name="autoExclusive">
                 <bool>false</bool>
@@ -163,9 +163,12 @@
                 </font>
                </property>
                <property name="text">
-                <string>Statistics</string>
+                <string>Statistiques</string>
                </property>
                <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="checked">
                 <bool>true</bool>
                </property>
                <property name="autoExclusive">
@@ -197,11 +200,49 @@
                 <attribute name="title">
                  <string>Summary</string>
                 </attribute>
+                <widget class="QLabel" name="label_2">
+                 <property name="geometry">
+                  <rect>
+                   <x>10</x>
+                   <y>20</y>
+                   <width>171</width>
+                   <height>81</height>
+                  </rect>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color: rgb(255, 255, 255);</string>
+                 </property>
+                 <property name="text">
+                  <string>SYS866 - Principes et fondements des jumeaux numériques</string>
+                 </property>
+                 <property name="wordWrap">
+                  <bool>true</bool>
+                 </property>
+                </widget>
                </widget>
                <widget class="QWidget" name="tab_2">
                 <attribute name="title">
-                 <string>Constraints</string>
+                 <string>Legende</string>
                 </attribute>
+                <widget class="QLabel" name="label_3">
+                 <property name="geometry">
+                  <rect>
+                   <x>10</x>
+                   <y>10</y>
+                   <width>171</width>
+                   <height>141</height>
+                  </rect>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color: rgb(255, 255, 255);</string>
+                 </property>
+                 <property name="text">
+                  <string>Statistiques: Rouge = Canopy cover. Vert = Max Canopy cover. Rouge = Niveau d'humidité du sol</string>
+                 </property>
+                 <property name="wordWrap">
+                  <bool>true</bool>
+                 </property>
+                </widget>
                </widget>
               </widget>
              </item>
@@ -263,14 +304,14 @@
              <enum>QTabWidget::East</enum>
             </property>
             <property name="currentIndex">
-             <number>4</number>
+             <number>1</number>
             </property>
             <property name="tabBarAutoHide">
              <bool>true</bool>
             </property>
             <widget class="QWidget" name="tab_setting">
              <attribute name="title">
-              <string>Settings</string>
+              <string>Parametres</string>
              </attribute>
              <layout class="QGridLayout" name="gridLayout_5">
               <item row="0" column="0">
@@ -373,7 +414,7 @@
             </widget>
             <widget class="QWidget" name="tab_sensors">
              <attribute name="title">
-              <string>Sensors</string>
+              <string>Capteurs</string>
              </attribute>
              <layout class="QGridLayout" name="gridLayout_4">
               <item row="0" column="1">
@@ -485,7 +526,7 @@
             </widget>
             <widget class="QWidget" name="tab_Actuator">
              <attribute name="title">
-              <string>Actuators</string>
+              <string>Actionneurs</string>
              </attribute>
              <layout class="QGridLayout" name="gridLayout_11">
               <item row="0" column="0">
@@ -535,7 +576,7 @@
             </widget>
             <widget class="QWidget" name="tab_stat">
              <attribute name="title">
-              <string>Statistics</string>
+              <string>Statistiques</string>
              </attribute>
              <layout class="QGridLayout" name="gridLayout_3">
               <item row="0" column="0">
