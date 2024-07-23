@@ -109,8 +109,10 @@ class DtCropModel(BaseDt):
         return t
 
     def get_soil_depletion(self):
-        depletion_level = self.model._init_cond.depletion/self.model._init_cond.taw
-        return depletion_level
+        if self.get_time_index() > 0:
+            depletion_level = self.model._init_cond.depletion/self.model._init_cond.taw
+            return depletion_level
+        return 0
 
     def is_finished(self):
         model_is_finished =self.model._clock_struct.model_is_finished

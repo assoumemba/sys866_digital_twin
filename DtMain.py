@@ -16,28 +16,74 @@ from Visualization.DtMainWindow import Ui_MainWindow
 
 import pyqtgraph as pg
 from PyQt6 import QtWidgets
+from pyqtgraph.Qt import QtCore
 
 from utils import ROOT_DIR
-
-
+from DT.DtModelController import DtModelController
 
 # Enable antialiasing for prettier plots
 pg.setConfigOptions(antialias=True)
+dt_controller = DtModelController()
 
 def setup_ui(ui):
+    _translate = QtCore.QCoreApplication.translate
 
-    #graph 1
-    ui.stat_graph_1.plot(y=np.random.normal(size=100))
+    #Sensor Data - Canopy cover
+    global sensor_cc_curve
+    ui.gb_stat_1.setTitle(_translate("MainWindow", "Capteurs - Canopy cover"))
+    sensor_cc_curve = ui.stat_graph_1.plot()
     
 
-    #Multiple curves
-    ui.stat_graph_2.plot(np.random.normal(size=100), pen=(255,0,0), name="Red curve")
-    ui.stat_graph_2.plot(np.random.normal(size=110)+5, pen=(0,255,0), name="Green curve")
-    ui.stat_graph_2.plot(np.random.normal(size=120)+10, pen=(0,0,255), name="Blue curve")
+    #Modele numerique
+    global dt_cc_curve, dt_cc_max_curve, dt_depletion_curve
+    ui.gb_stat_2.setTitle(_translate("MainWindow", "Modele numerique - Canopy Cover / Max / Humidite du sol"))
 
-    #Drawing with points
-    ui.stat_graph_3.plot(np.random.normal(size=100), pen=(200,200,200), symbolBrush=(255,0,0), symbolPen='w')
+    dt_cc_curve= ui.stat_graph_2.plot(pen=(255,0,0), name="Canopy Cover")
+    dt_cc_max_curve = ui.stat_graph_2.plot(pen=(0,255,0), name="Canopy Maximale")
+    dt_depletion_curve = ui.stat_graph_2.plot(pen=(0,0,255), name="Humidite")
 
+    #Drawing irrigation_curve
+    global irrigation_curve
+    ui.gb_stat_3.setTitle(_translate("MainWindow", "Periodes irrigation"))
+    irrigation_curve = ui.stat_graph_3.plot(pen=(200,200,200), symbolBrush=(255,0,0), symbolPen='w')
+
+    #Progress bar
+    global progress_bar
+    progress_bar = ui.progressBar
+    progress_bar.setProperty("value", 0)
+    
+
+
+def update():
+    global sensor_cc_curve
+    global irrigation_curve
+    global dt_cc_curve, dt_cc_max_curve, dt_depletion_curve
+    global progress_bar
+
+    #advance one day
+    dt_controller.run_step()
+
+    #irrigation
+    irrigation_data_points = dt_controller.get_irrigation_points()
+    irrigation_curve.setData(irrigation_data_points)
+
+    #Sensor Data - Canopy cover
+    sensor_cc_points = dt_controller.get_sensor_cc_points()
+    sensor_cc_curve.setData(sensor_cc_points)
+
+    #Modele numerique
+    dt_cc_points = dt_controller.get_dt_cc_points()
+    dt_cc_curve.setData(dt_cc_points)
+
+    dt_max_cc_points = dt_controller.get_dt_max_cc_points()
+    dt_cc_max_curve.setData(dt_max_cc_points + 5)
+
+    dt_depletion_points = dt_controller.get_dt_depletion_points()
+    dt_depletion_curve.setData(dt_depletion_points + 10)
+
+    #progression
+    progress_bar.setProperty("value", dt_controller.get_progression_rate() + 1)
+    
 
 
 if __name__ == "__main__":
@@ -47,6 +93,11 @@ if __name__ == "__main__":
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
     setup_ui(ui)
+
+    #Update every period
+    timer = QtCore.QTimer()
+    timer.timeout.connect(update)
+    timer.start(1000)
     
     MainWindow.show()
     sys.exit(app.exec())

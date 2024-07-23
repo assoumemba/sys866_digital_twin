@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>c87d9603-0e2d-4c5b-85c1-a2516bbbd9dd</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>TimelineModuleAquaCrop.py</StartupFile>
+    <StartupFile>DtMain.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -43,6 +43,7 @@
     <Compile Include="DtMain.py" />
     <Compile Include="DT\BaseDt.py" />
     <Compile Include="DT\DtCropModel.py" />
+    <Compile Include="DT\DtModelController.py" />
     <Compile Include="pyqtsample.py" />
     <Compile Include="SampleModule.py" />
     <Compile Include="Sensors\BaseSensor.py" />

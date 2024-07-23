@@ -1,3 +1,4 @@
+from utils import *
 from Sensors.BaseSensor import BaseSensor
 
 import os.path
@@ -31,24 +32,41 @@ class CanopyCoverSensor(BaseSensor):
         self.sensor_data = df.set_index('date')
         self.sensor_dates = np.array(df['date'].drop_duplicates())
 
+    def get_actual_cc_val(self, date):
+        if self.is_date_exist(date):
+            cc_val = self.sensor_data.at[date, 'mean']
+            return cc_val
+        return np.zeros(1)
+
     def get_actual_cc_max(self, date):
         
-        cc_val = self.sensor_data.at[date, 'mean']
+        cc_val = self.get_actual_cc_val(date)
         return np.max(cc_val)/100.0
 
     def get_actual_cc_min(self, date):
         
-        cc_val = self.sensor_data.at[date, 'mean']
+        cc_val = self.get_actual_cc_val(date)
         return np.min(cc_val)/100.0
 
     def get_actual_cc_mean(self, date):
         
-        cc_val = self.sensor_data.at[date, 'mean']
+        cc_val = self.get_actual_cc_val(date)
         return np.mean(cc_val)/100.0
 
     def get_calendar_date(self):
 
         return self.sensor_dates 
+
+    def is_date_exist(self, date_in):
+
+        date_list = self.get_calendar_date()
+        for date_c in np.nditer(date_list):
+            date_c_str = convert_date_to_str(date_c)
+            date_in_str = convert_date_to_str(date_in)
+            if date_c_str == date_in_str:
+                return True
+
+        return False
 
 
 
