@@ -51,8 +51,38 @@ def setup_ui(ui):
     global progress_bar
     progress_bar = ui.progressBar
     progress_bar.setProperty("value", 0)
+
+    global main_ui
+    main_ui = ui
+    
+    ui.btnAquaCropSim.clicked.connect(sim_clicked_event)
+    ui.btnSettings.clicked.connect(setting_clicked_event)
+    ui.btnCrops.clicked.connect(crop_clicked_event)
+    ui.btnSensors.clicked.connect(sensor_clicked_event)
+    ui.btnStat.clicked.connect(stats_clicked_event)
+
+    #ui.btnAquaCropSim.setChecked(True)
     
 
+def setting_clicked_event():
+    global main_ui
+    main_ui.tabActuators.setCurrentIndex(0)
+
+def sensor_clicked_event():
+    global main_ui
+    main_ui.tabActuators.setCurrentIndex(1)
+
+def crop_clicked_event():
+    global main_ui
+    main_ui.tabActuators.setCurrentIndex(3)
+
+def sim_clicked_event():
+    global main_ui
+    main_ui.tabActuators.setCurrentIndex(1)
+
+def stats_clicked_event():
+    global main_ui
+    main_ui.tabActuators.setCurrentIndex(4)
 
 def update():
     global sensor_cc_curve
@@ -76,13 +106,15 @@ def update():
     dt_cc_curve.setData(dt_cc_points)
 
     dt_max_cc_points = dt_controller.get_dt_max_cc_points()
-    dt_cc_max_curve.setData(dt_max_cc_points + 5)
+    dt_cc_max_curve.setData(dt_max_cc_points)
 
     dt_depletion_points = dt_controller.get_dt_depletion_points()
-    dt_depletion_curve.setData(dt_depletion_points + 10)
+    dt_depletion_curve.setData(dt_depletion_points)
 
     #progression
     progress_bar.setProperty("value", dt_controller.get_progression_rate() + 1)
+
+    
     
 
 
@@ -97,7 +129,7 @@ if __name__ == "__main__":
     #Update every period
     timer = QtCore.QTimer()
     timer.timeout.connect(update)
-    timer.start(1000)
+    timer.start(125)
     
     MainWindow.show()
     sys.exit(app.exec())

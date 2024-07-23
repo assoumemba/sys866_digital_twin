@@ -81,7 +81,7 @@ class DtModelController(BaseDt):
         #self.dt_depletion_points[current_day_index] = self.dtCrop.get_soil_depletion()
         
         self.irrigation_points = np.append(self.irrigation_points, irrigation_depth)
-        self.sensor_cc_points = np.append(self.sensor_cc_points, self.ccSensor.get_actual_cc_min(current_date))
+        self.sensor_cc_points = np.append(self.sensor_cc_points, self.ccSensor.get_actual_cc_mean(current_date))
         self.dt_cc_points = np.append(self.dt_cc_points, self.dtCrop.get_predicted_canopy())
         self.dt_max_cc_points = np.append(self.dt_max_cc_points, self.dtCrop.get_ccx())
         self.dt_depletion_points = np.append(self.dt_depletion_points, self.dtCrop.get_soil_depletion())
