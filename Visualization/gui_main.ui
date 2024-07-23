@@ -91,7 +91,7 @@
                 <string>Parametres</string>
                </property>
                <property name="checkable">
-                <bool>true</bool>
+                <bool>false</bool>
                </property>
                <property name="checked">
                 <bool>false</bool>
@@ -112,7 +112,7 @@
                 <string>AquaCrop Sim</string>
                </property>
                <property name="checkable">
-                <bool>true</bool>
+                <bool>false</bool>
                </property>
                <property name="autoExclusive">
                 <bool>true</bool>
@@ -130,7 +130,7 @@
                 <string>Actionneurs</string>
                </property>
                <property name="checkable">
-                <bool>true</bool>
+                <bool>false</bool>
                </property>
                <property name="autoExclusive">
                 <bool>true</bool>
@@ -148,7 +148,7 @@
                 <string>Capteurs</string>
                </property>
                <property name="checkable">
-                <bool>true</bool>
+                <bool>false</bool>
                </property>
                <property name="autoExclusive">
                 <bool>false</bool>
@@ -166,10 +166,10 @@
                 <string>Statistiques</string>
                </property>
                <property name="checkable">
-                <bool>true</bool>
+                <bool>false</bool>
                </property>
                <property name="checked">
-                <bool>true</bool>
+                <bool>false</bool>
                </property>
                <property name="autoExclusive">
                 <bool>true</bool>
@@ -213,7 +213,7 @@
                   <string notr="true">color: rgb(255, 255, 255);</string>
                  </property>
                  <property name="text">
-                  <string>SYS866 - Principes et fondements des jumeaux numériques</string>
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;SYS866&lt;/p&gt;&lt;p&gt;Principes et fondements des jumeaux numériques.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                  </property>
                  <property name="wordWrap">
                   <bool>true</bool>
@@ -237,7 +237,7 @@
                   <string notr="true">color: rgb(255, 255, 255);</string>
                  </property>
                  <property name="text">
-                  <string>Statistiques: Rouge = Canopy cover. Vert = Max Canopy cover. Rouge = Niveau d'humidité du sol</string>
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Statistiques: &lt;/p&gt;&lt;p&gt;Rouge = Canopy cover.&lt;/p&gt;&lt;p&gt;Vert = Max Canopy cover. &lt;/p&gt;&lt;p&gt;Bleu = Niveau d'humidité du sol.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                  </property>
                  <property name="wordWrap">
                   <bool>true</bool>
@@ -267,7 +267,7 @@
              <item>
               <widget class="QProgressBar" name="progressBar">
                <property name="value">
-                <number>24</number>
+                <number>0</number>
                </property>
               </widget>
              </item>
@@ -304,7 +304,7 @@
              <enum>QTabWidget::East</enum>
             </property>
             <property name="currentIndex">
-             <number>1</number>
+             <number>4</number>
             </property>
             <property name="tabBarAutoHide">
              <bool>true</bool>
@@ -323,39 +323,54 @@
                  <enum>QFrame::Raised</enum>
                 </property>
                 <layout class="QGridLayout" name="gridLayout_7">
-                 <item row="0" column="0">
-                  <widget class="QGroupBox" name="groupBox_3">
-                   <property name="styleSheet">
-                    <string notr="true">font:bold;color:white;</string>
-                   </property>
-                   <property name="title">
-                    <string>GroupBox</string>
-                   </property>
-                  </widget>
-                 </item>
                  <item row="1" column="0">
                   <widget class="QGroupBox" name="groupBox_4">
                    <property name="styleSheet">
                     <string notr="true">font:bold;color:white;</string>
                    </property>
                    <property name="title">
-                    <string>GroupBox</string>
+                    <string>Objet physique</string>
                    </property>
+                   <layout class="QGridLayout" name="gridLayout_21">
+                    <item row="0" column="0">
+                     <widget class="QLabel" name="label_5">
+                      <property name="text">
+                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Data From: TERRA-REF, An open reference data set from high resolution genomics, phenomics, and imaging sensors&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;https://terraref.org/&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                      </property>
+                      <property name="wordWrap">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
                   </widget>
                  </item>
-                 <item row="2" column="0">
-                  <widget class="QPushButton" name="btnApplySetting">
-                   <property name="font">
-                    <font>
-                     <pointsize>12</pointsize>
-                    </font>
-                   </property>
+                 <item row="0" column="0">
+                  <widget class="QGroupBox" name="groupBox_3">
                    <property name="styleSheet">
-                    <string notr="true">color: white;</string>
+                    <string notr="true">font:bold;color:white;</string>
                    </property>
-                   <property name="text">
-                    <string>Apply</string>
+                   <property name="title">
+                    <string>Modele numerique</string>
                    </property>
+                   <layout class="QGridLayout" name="gridLayout_20">
+                    <item row="0" column="0">
+                     <widget class="QLabel" name="label_4">
+                      <property name="font">
+                       <font>
+                        <italic>false</italic>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Modele Sorgho - Année 2017&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Simulation en python avec les équations d'épavotranspiration sur un sol de type SandyLoam.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;La croissance des plants est simulée avec les équations de croissance normale proposée par la FAO (Organisation des Nations unies pour l'alimentation et l'agriculture), avec AquaCrop.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Ce modele permet de predire les periodes d'irrigation propice du sol en tenant compte des facteurs climatiques, la nature de la plante pour assurer une croissance optimale.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                      </property>
+                      <property name="wordWrap">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
                   </widget>
                  </item>
                 </layout>
@@ -378,145 +393,48 @@
                 </property>
                 <layout class="QGridLayout" name="gridLayout_9">
                  <item row="0" column="0">
-                  <widget class="QGroupBox" name="groupBox_5">
+                  <widget class="QGroupBox" name="gp_soil_depletion">
                    <property name="styleSheet">
                     <string notr="true">font:bold;color:white;</string>
                    </property>
                    <property name="title">
-                    <string>GroupBox</string>
+                    <string>Humidité du sol</string>
                    </property>
+                   <layout class="QGridLayout" name="gridLayout_17">
+                    <item row="0" column="0">
+                     <widget class="PlotWidget" name="sim_graph_1" native="true"/>
+                    </item>
+                   </layout>
                   </widget>
                  </item>
                  <item row="1" column="0">
-                  <widget class="QGroupBox" name="groupBox_6">
+                  <widget class="QGroupBox" name="gp_canopy_cover">
                    <property name="styleSheet">
                     <string notr="true">font:bold;color:white;</string>
                    </property>
                    <property name="title">
-                    <string>GroupBox</string>
+                    <string>Canopy cover prediction</string>
                    </property>
+                   <layout class="QGridLayout" name="gridLayout_18">
+                    <item row="0" column="0">
+                     <widget class="PlotWidget" name="sim_graph_2" native="true"/>
+                    </item>
+                   </layout>
                   </widget>
                  </item>
                  <item row="2" column="0">
-                  <widget class="QGroupBox" name="groupBox_7">
+                  <widget class="QGroupBox" name="gp_canopy_cover_max">
                    <property name="styleSheet">
                     <string notr="true">font:bold;color:white;</string>
                    </property>
                    <property name="title">
-                    <string>GroupBox</string>
+                    <string>Canopy cover maximale (evolution normale)</string>
                    </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="tab_sensors">
-             <attribute name="title">
-              <string>Capteurs</string>
-             </attribute>
-             <layout class="QGridLayout" name="gridLayout_4">
-              <item row="0" column="1">
-               <widget class="QGroupBox" name="groupBox_8">
-                <property name="styleSheet">
-                 <string notr="true">color:white;font:bold;</string>
-                </property>
-                <property name="title">
-                 <string>Sensors</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-                <layout class="QGridLayout" name="gridLayout_10">
-                 <item row="0" column="0">
-                  <widget class="QGroupBox" name="groupBox_9">
-                   <property name="title">
-                    <string>GroupBox</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="0" column="1">
-                  <widget class="QGroupBox" name="groupBox_16">
-                   <property name="title">
-                    <string>GroupBox</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="0" column="2">
-                  <widget class="QGroupBox" name="groupBox_10">
-                   <property name="title">
-                    <string>GroupBox</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="0">
-                  <widget class="QGroupBox" name="groupBox_17">
-                   <property name="title">
-                    <string>GroupBox</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="1">
-                  <widget class="QGroupBox" name="groupBox_11">
-                   <property name="title">
-                    <string>GroupBox</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="2">
-                  <widget class="QGroupBox" name="groupBox_12">
-                   <property name="title">
-                    <string>GroupBox</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="2" column="0">
-                  <widget class="QGroupBox" name="groupBox_15">
-                   <property name="title">
-                    <string>GroupBox</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="2" column="1">
-                  <widget class="QGroupBox" name="groupBox_13">
-                   <property name="title">
-                    <string>GroupBox</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="2" column="2">
-                  <widget class="QGroupBox" name="groupBox_14">
-                   <property name="title">
-                    <string>GroupBox</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                   </property>
+                   <layout class="QGridLayout" name="gridLayout_19">
+                    <item row="0" column="0">
+                     <widget class="PlotWidget" name="sim_graph_3" native="true"/>
+                    </item>
+                   </layout>
                   </widget>
                  </item>
                 </layout>
@@ -535,7 +453,7 @@
                  <string notr="true">font:bold;color:white;</string>
                 </property>
                 <property name="title">
-                 <string>Actuators</string>
+                 <string>Actionneurs</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
@@ -544,29 +462,206 @@
                  <item row="0" column="0">
                   <widget class="QGroupBox" name="groupBox_19">
                    <property name="title">
-                    <string>GroupBox</string>
+                    <string>Valve Min</string>
                    </property>
+                   <layout class="QGridLayout" name="gridLayout_22">
+                    <item row="0" column="0">
+                     <widget class="PlotWidget" name="action_graph_1" native="true"/>
+                    </item>
+                   </layout>
                   </widget>
                  </item>
                  <item row="0" column="1">
                   <widget class="QGroupBox" name="groupBox_20">
                    <property name="title">
-                    <string>GroupBox</string>
+                    <string>Quantité d'eau libérée</string>
                    </property>
+                   <layout class="QGridLayout" name="gridLayout_23">
+                    <item row="0" column="0">
+                     <widget class="PlotWidget" name="action_graph_2" native="true"/>
+                    </item>
+                   </layout>
                   </widget>
                  </item>
                  <item row="1" column="0">
                   <widget class="QGroupBox" name="groupBox_21">
                    <property name="title">
-                    <string>GroupBox</string>
+                    <string>Valve Medium</string>
                    </property>
+                   <layout class="QGridLayout" name="gridLayout_24">
+                    <item row="0" column="0">
+                     <widget class="PlotWidget" name="action_graph_3" native="true"/>
+                    </item>
+                   </layout>
                   </widget>
                  </item>
                  <item row="1" column="1">
                   <widget class="QGroupBox" name="groupBox_22">
                    <property name="title">
-                    <string>GroupBox</string>
+                    <string>Quantité d'eau libérée</string>
                    </property>
+                   <layout class="QGridLayout" name="gridLayout_25">
+                    <item row="0" column="0">
+                     <widget class="PlotWidget" name="action_graph_4" native="true"/>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="tab_sensors">
+             <attribute name="title">
+              <string>Capteurs</string>
+             </attribute>
+             <layout class="QGridLayout" name="gridLayout_4">
+              <item row="0" column="1">
+               <widget class="QGroupBox" name="groupBox_8">
+                <property name="styleSheet">
+                 <string notr="true">color:white;font:bold;</string>
+                </property>
+                <property name="title">
+                 <string>Capteurs</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_10">
+                 <item row="0" column="0">
+                  <widget class="QGroupBox" name="groupBox_9">
+                   <property name="title">
+                    <string>Canopy cover</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                   </property>
+                   <layout class="QGridLayout" name="gridLayout_26">
+                    <item row="0" column="0">
+                     <widget class="PlotWidget" name="capteur_graph_1" native="true"/>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QGroupBox" name="groupBox_16">
+                   <property name="title">
+                    <string>Leaf Angle Chi</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                   </property>
+                   <layout class="QGridLayout" name="gridLayout_27">
+                    <item row="0" column="0">
+                     <widget class="PlotWidget" name="capteur_graph_2" native="true"/>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item row="0" column="2">
+                  <widget class="QGroupBox" name="groupBox_10">
+                   <property name="title">
+                    <string>Leaf length</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                   </property>
+                   <layout class="QGridLayout" name="gridLayout_28">
+                    <item row="0" column="0">
+                     <widget class="PlotWidget" name="capteur_graph_3" native="true"/>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item row="1" column="0">
+                  <widget class="QGroupBox" name="groupBox_17">
+                   <property name="title">
+                    <string>Leaf width</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                   </property>
+                   <layout class="QGridLayout" name="gridLayout_29">
+                    <item row="0" column="0">
+                     <widget class="PlotWidget" name="capteur_graph_4" native="true"/>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <widget class="QGroupBox" name="groupBox_11">
+                   <property name="title">
+                    <string>Canopy height</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                   </property>
+                   <layout class="QGridLayout" name="gridLayout_30">
+                    <item row="0" column="0">
+                     <widget class="PlotWidget" name="capteur_graph_5" native="true"/>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item row="1" column="2">
+                  <widget class="QGroupBox" name="groupBox_12">
+                   <property name="title">
+                    <string>Leaf angle alpha</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                   </property>
+                   <layout class="QGridLayout" name="gridLayout_31">
+                    <item row="0" column="0">
+                     <widget class="PlotWidget" name="capteur_graph_6" native="true"/>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="QGroupBox" name="groupBox_15">
+                   <property name="title">
+                    <string>Leaf angle beta</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                   </property>
+                   <layout class="QGridLayout" name="gridLayout_32">
+                    <item row="0" column="0">
+                     <widget class="PlotWidget" name="capteur_graph_7" native="true"/>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item row="2" column="1">
+                  <widget class="QGroupBox" name="groupBox_13">
+                   <property name="title">
+                    <string>Temperature</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                   </property>
+                   <layout class="QGridLayout" name="gridLayout_33">
+                    <item row="0" column="0">
+                     <widget class="PlotWidget" name="capteur_graph_8" native="true"/>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item row="2" column="2">
+                  <widget class="QGroupBox" name="groupBox_14">
+                   <property name="title">
+                    <string>Humidity relative</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                   </property>
+                   <layout class="QGridLayout" name="gridLayout_34">
+                    <item row="0" column="0">
+                     <widget class="PlotWidget" name="capteur_graph_9" native="true"/>
+                    </item>
+                   </layout>
                   </widget>
                  </item>
                 </layout>

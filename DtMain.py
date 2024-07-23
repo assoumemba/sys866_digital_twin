@@ -52,6 +52,7 @@ def setup_ui(ui):
     progress_bar = ui.progressBar
     progress_bar.setProperty("value", 0)
 
+    #Click Events buttons
     global main_ui
     main_ui = ui
     
@@ -61,28 +62,33 @@ def setup_ui(ui):
     ui.btnSensors.clicked.connect(sensor_clicked_event)
     ui.btnStat.clicked.connect(stats_clicked_event)
 
-    #ui.btnAquaCropSim.setChecked(True)
-    
+    ##Global UI 
+    #sim
+    global sim_humidity_curve, sim_cc_curve, sim_cc_max_curve
+    sim_humidity_curve = ui.sim_graph_1.plot()
+    sim_cc_curve = ui.sim_graph_2.plot()
+    sim_cc_max_curve = ui.sim_graph_3.plot()
 
-def setting_clicked_event():
-    global main_ui
-    main_ui.tabActuators.setCurrentIndex(0)
+    #actuators
+    global actu_val_min_curve,actu_val_min_water_curve, actu_val_mean_curve, actu_val_mean_water_curve
+    actu_val_min_curve = ui.action_graph_1.plot()
+    actu_val_min_water_curve = ui.action_graph_2.plot()
+    actu_val_mean_curve = ui.action_graph_3.plot()
+    actu_val_mean_water_curve = ui.action_graph_4.plot()
 
-def sensor_clicked_event():
-    global main_ui
-    main_ui.tabActuators.setCurrentIndex(1)
-
-def crop_clicked_event():
-    global main_ui
-    main_ui.tabActuators.setCurrentIndex(3)
-
-def sim_clicked_event():
-    global main_ui
-    main_ui.tabActuators.setCurrentIndex(1)
-
-def stats_clicked_event():
-    global main_ui
-    main_ui.tabActuators.setCurrentIndex(4)
+    #sensors 1
+    global sensor_cc_curve_1, sensor_leaf_angle_chi_curve, sensor_leaf_lenght_curve, sensor_leaf_width_curve
+    sensor_cc_curve_1 = ui.capteur_graph_1.plot()
+    sensor_leaf_angle_chi_curve = ui.capteur_graph_2.plot()
+    sensor_leaf_lenght_curve = ui.capteur_graph_3.plot()
+    sensor_leaf_width_curve = ui.capteur_graph_4.plot()
+    #sensors 2
+    global sensor_cc_height_curve, sensor_leaf_angle_alpha_curve, sensor_leaf_angle_beta_curve, sensor_temperature_curve, sensor_humidty_curve
+    sensor_cc_height_curve = ui.capteur_graph_5.plot()
+    sensor_leaf_angle_alpha_curve = ui.capteur_graph_6.plot()
+    sensor_leaf_angle_beta_curve = ui.capteur_graph_7.plot()
+    sensor_temperature_curve = ui.capteur_graph_8.plot()
+    sensor_humidty_curve = ui.capteur_graph_9.plot()
 
 def update():
     global sensor_cc_curve
@@ -114,8 +120,39 @@ def update():
     #progression
     progress_bar.setProperty("value", dt_controller.get_progression_rate() + 1)
 
-    
-    
+    #update global UI
+    update_sim()
+    update_actuators()
+    update_sensors()
+
+def setting_clicked_event():
+    global main_ui
+    main_ui.tabActuators.setCurrentIndex(0)
+
+def sim_clicked_event():
+    global main_ui
+    main_ui.tabActuators.setCurrentIndex(1)
+
+def crop_clicked_event():
+    global main_ui
+    main_ui.tabActuators.setCurrentIndex(2)
+
+def sensor_clicked_event():
+    global main_ui
+    main_ui.tabActuators.setCurrentIndex(3)
+
+def stats_clicked_event():
+    global main_ui
+    main_ui.tabActuators.setCurrentIndex(4)
+
+def update_sim():
+    pass
+
+def update_actuators():
+    pass
+
+def update_sensors():
+    pass
 
 
 if __name__ == "__main__":
@@ -129,7 +166,7 @@ if __name__ == "__main__":
     #Update every period
     timer = QtCore.QTimer()
     timer.timeout.connect(update)
-    timer.start(125)
+    timer.start(185)
     
     MainWindow.show()
     sys.exit(app.exec())
