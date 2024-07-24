@@ -49,8 +49,12 @@
     <Compile Include="utils.py" />
     <Compile Include="Visualization\BaseUI.py" />
     <Compile Include="Visualization\DtMainWindow.py" />
+    <Compile Include="Visualization\DtActuatorTabController.py" />
+    <Compile Include="Visualization\DtSensorTabController.py" />
+    <Compile Include="Visualization\DtSimTabController.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="readme.txt" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />

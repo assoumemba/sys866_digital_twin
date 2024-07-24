@@ -1,25 +1,13 @@
-"""
-https://www.pythonguis.com/tutorials/pyqt6-first-steps-qt-designer/
-https://www.pythonguis.com/tutorials/pyqt6-embed-pyqtgraph-custom-widgets-qt-app/
-command: pyqt6-tools designer
-         pyqt6-tools --help
-         pyuic6 -x gui_main.ui -o DtMainWindow.py
-
-This example demonstrates many of the 2D plotting capabilities
-in pyqtgraph. All of the plots may be panned/scaled by dragging with 
-the left/right mouse buttons. Right click on any plot to show a context menu.
-"""
-
 import sys
-import numpy as np
 from Visualization.DtMainWindow import Ui_MainWindow
-
 import pyqtgraph as pg
 from PyQt6 import QtWidgets
 from pyqtgraph.Qt import QtCore
-
-from utils import ROOT_DIR
 from DT.DtModelController import DtModelController
+
+from Visualization.DtActuatorTabController import DtActuatorTabController
+from Visualization.DtSimTabController import DtSimTabController
+from Visualization.DtSensorTabController import DtSensorTabController
 
 # Enable antialiasing for prettier plots
 pg.setConfigOptions(antialias=True)
@@ -64,20 +52,23 @@ def setup_ui(ui):
 
     ##Global UI 
     #sim
-    global sim_humidity_curve, sim_cc_curve, sim_cc_max_curve
+    global sim_controller, sim_humidity_curve, sim_cc_curve, sim_cc_max_curve
     sim_humidity_curve = ui.sim_graph_1.plot()
     sim_cc_curve = ui.sim_graph_2.plot()
     sim_cc_max_curve = ui.sim_graph_3.plot()
+    sim_controller = DtSimTabController(dt_controller, sim_humidity_curve, sim_cc_curve, sim_cc_max_curve)
 
     #actuators
-    global actu_val_min_curve,actu_val_min_water_curve, actu_val_mean_curve, actu_val_mean_water_curve
+    global actuator_controller, actu_val_min_curve,actu_val_min_water_curve, actu_val_mean_curve, actu_val_mean_water_curve
     actu_val_min_curve = ui.action_graph_1.plot()
     actu_val_min_water_curve = ui.action_graph_2.plot()
     actu_val_mean_curve = ui.action_graph_3.plot()
     actu_val_mean_water_curve = ui.action_graph_4.plot()
+    actuator_controller = DtActuatorTabController(dt_controller, actu_val_min_curve,actu_val_min_water_curve, actu_val_mean_curve, actu_val_mean_water_curve)
+
 
     #sensors 1
-    global sensor_cc_curve_1, sensor_leaf_angle_chi_curve, sensor_leaf_lenght_curve, sensor_leaf_width_curve
+    global sensor_controller, sensor_cc_curve_1, sensor_leaf_angle_chi_curve, sensor_leaf_lenght_curve, sensor_leaf_width_curve
     sensor_cc_curve_1 = ui.capteur_graph_1.plot()
     sensor_leaf_angle_chi_curve = ui.capteur_graph_2.plot()
     sensor_leaf_lenght_curve = ui.capteur_graph_3.plot()
@@ -89,6 +80,12 @@ def setup_ui(ui):
     sensor_leaf_angle_beta_curve = ui.capteur_graph_7.plot()
     sensor_temperature_curve = ui.capteur_graph_8.plot()
     sensor_humidty_curve = ui.capteur_graph_9.plot()
+
+    sensor_controller = DtSensorTabController(dt_controller, sensor_cc_curve_1,
+                        sensor_leaf_angle_chi_curve, sensor_leaf_lenght_curve,
+                        sensor_leaf_width_curve, 
+                        sensor_cc_height_curve, sensor_leaf_angle_alpha_curve,
+                        sensor_leaf_angle_beta_curve, sensor_temperature_curve, sensor_humidty_curve)
 
 def update():
     global sensor_cc_curve
@@ -146,13 +143,16 @@ def stats_clicked_event():
     main_ui.tabActuators.setCurrentIndex(4)
 
 def update_sim():
-    pass
+    global sim_controller
+    sim_controller.update_ui()
 
 def update_actuators():
-    pass
+    global actuator_controller
+    actuator_controller.update_ui()
 
 def update_sensors():
-    pass
+    global sensor_controller
+    sensor_controller.update_ui()
 
 
 if __name__ == "__main__":
