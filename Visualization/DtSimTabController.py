@@ -7,6 +7,14 @@ class DtSimTabController(object):
         self.sim_cc_max_curve = sim_cc_max_curve
 
     def update_ui(self):
-        pass
+        #Modele numerique
+        dt_cc_points = self.dt_controller.get_dt_cc_points()
+        self.sim_cc_curve.setData(dt_cc_points)
+
+        dt_max_cc_points = self.dt_controller.get_dt_max_cc_points()
+        self.sim_cc_max_curve.setData(dt_max_cc_points)
+
+        dt_depletion_points = self.dt_controller.get_dt_depletion_points()
+        self.sim_humidity_curve.setData(dt_depletion_points)
 
 
