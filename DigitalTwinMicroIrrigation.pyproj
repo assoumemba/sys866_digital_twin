@@ -24,6 +24,7 @@
   <ItemGroup>
     <Folder Include="Actuators\" />
     <Folder Include="DT\" />
+    <Folder Include="Tools\" />
     <Folder Include="Sensors\" />
     <Folder Include="Visualization\" />
   </ItemGroup>
@@ -40,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actuators\BaseActuator.py" />
+    <Compile Include="Tools\cd4Unzip.py" />
+    <Compile Include="Tools\download_era5.py" />
     <Compile Include="DtMain.py" />
     <Compile Include="DT\BaseDt.py" />
     <Compile Include="DT\DtCropModel.py" />
