@@ -19,9 +19,9 @@ class DtModelController(BaseDt):
         sim_end = '2017/08/30'
 
         soil_name = 'SandyLoam'
-        crop_name = 'Maize'
+        crop_name = 'Sorghum' # 'Sorghum', 'SorghumGDD 'Maize'
         planting_date = '05/01'
-        weather_path = get_filepath('champion_climate.txt')
+        weather_path = AQUA_CROP_CONFIG_PATH #get_filepath('champion_climate.txt')
 
         #cc
         self.ccSensor = CanopyCoverSensor(CANOPY_SENSORS_PATH)
