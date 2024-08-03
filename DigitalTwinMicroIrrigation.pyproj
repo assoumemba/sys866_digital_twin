@@ -40,7 +40,9 @@
     </Interpreter>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actuators\ActuatorValve.py" />
     <Compile Include="Actuators\BaseActuator.py" />
+    <Compile Include="Sensors\EnvironmentSensor.py" />
     <Compile Include="Tools\cd4Unzip.py" />
     <Compile Include="Tools\download_era5.py" />
     <Compile Include="DtMain.py" />

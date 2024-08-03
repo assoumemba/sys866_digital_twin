@@ -55,6 +55,16 @@ class BaseSensor(object):
 
         return self.select_new_val(new_val, self.last_cc_min)
 
+    def get_actual_normalized_mean(self, date, ratio):
+        
+        cc_val = self.get_actual_cc_val(date)
+        new_val = (np.mean(cc_val)/ratio)/100
+        #select value to return
+        if new_val > self.zero_value_treshold:
+            self.last_cc_mean = new_val
+
+        return self.select_new_val(new_val, self.last_cc_mean)
+
 
     def get_actual_cc_mean(self, date):
         

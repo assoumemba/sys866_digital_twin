@@ -10,7 +10,9 @@ from utils import *
 
 from DT.BaseDt import BaseDt
 from DT.DtCropModel import DtCropModel
+from Actuators.ActuatorValve import ActuatorValve
 from Sensors.CanopyCoverSensor import CanopyCoverSensor
+from Sensors.EnvironmentSensor import EnvironmentSensor
 
 class DtModelController(BaseDt):
     def __init__(self):
@@ -44,9 +46,20 @@ class DtModelController(BaseDt):
         #Leaf width
         self.ccLeafWidthSensor = CanopyCoverSensor(CANOPY_LEAF_WIDTH_PATH)
         self.ccLeafWidthSensor.load_data()
-        
+
+        #Temperature Sensor
+        self.envTemperatureSensor = EnvironmentSensor(ENVIRONMENT_CONFIG_PATH, "tmean")
+        self.envTemperatureSensor.load_data()
+
+        #Precipitation Sensor
+        self.envPrecipitationSensor = EnvironmentSensor(ENVIRONMENT_CONFIG_PATH, "prpc")
+        self.envPrecipitationSensor.load_data()
 
         self.dtCrop = DtCropModel(soil_name, sim_start, sim_end, crop_name, planting_date, weather_path)
+
+        #actuators
+        self.valve1 = ActuatorValve()
+        self.valve2 = ActuatorValve()
 
         #statistics
         date_size = 1 #len(self.dtCrop.calendar_dates)
@@ -64,6 +77,9 @@ class DtModelController(BaseDt):
         self.sensor_leaf_chi_points = np.zeros(date_size)
         self.sensor_leaf_length_points = np.zeros(date_size)
         self.sensor_leaf_width_points = np.zeros(date_size)
+
+        self.sensor_precipitation_points = np.zeros(date_size)
+        self.sensor_temperature_points = np.zeros(date_size)
 
      
     def get_crop_model(self):
@@ -120,6 +136,22 @@ class DtModelController(BaseDt):
         self.sensor_leaf_chi_points = np.append(self.sensor_leaf_chi_points, self.ccLeafAngleChiSensor.get_actual_cc_mean(current_date))
         self.sensor_leaf_length_points = np.append(self.sensor_leaf_length_points, self.ccLeafLengthSensor.get_actual_cc_mean(current_date))
         self.sensor_leaf_width_points = np.append(self.sensor_leaf_width_points, self.ccLeafWidthSensor.get_actual_cc_mean(current_date))
+
+        self.sensor_temperature_points = np.append(self.sensor_temperature_points, self.envTemperatureSensor.get_actual_cc_mean(current_date))
+        self.sensor_precipitation_points = np.append(self.sensor_precipitation_points, self.envPrecipitationSensor.get_actual_normalized_mean(current_date, 0.000000001))
+
+        #actuators
+        cc_max = self.ccSensor.get_actual_cc_max(current_date)
+        if irrigation_depth > 0 and cc_max > 0:
+            self.valve1.append_value(1, cc_max*irrigation_depth/(cc_max + irrigation_depth))
+        else:
+            self.valve1.append_value(0, 0)
+
+        cc_min = self.ccSensor.get_actual_cc_min(current_date)
+        if irrigation_depth > 0 and cc_min > 0:
+            self.valve2.append_value(1, cc_min*irrigation_depth/(cc_min*irrigation_depth))
+        else:
+            self.valve2.append_value(0, 0)
         
 
 
@@ -158,3 +190,21 @@ class DtModelController(BaseDt):
 
     def get_sensor_leaf_width_points(self):
         return self.sensor_leaf_width_points
+
+    def get_sensor_temperature_points(self):
+        return self.sensor_temperature_points
+
+    def get_sensor_precipitation_points(self):
+        return self.sensor_precipitation_points
+
+    def get_valve_1_trigger_points(self):
+        return self.valve1.get_trigger_points()
+
+    def get_valve_1_value_points(self):
+        return self.valve1.get_value_points()
+
+    def get_valve_2_trigger_points(self):
+        return self.valve2.get_trigger_points()
+
+    def get_valve_2_value_points(self):
+        return self.valve2.get_value_points()

@@ -38,6 +38,12 @@ class DtSensorTabController(object):
         #Sensor Data - leaf beta
         sensor_leaf_beta_points = self.dt_controller.get_sensor_leaf_beta_points()
         self.sensor_leaf_angle_beta_curve.setData(sensor_leaf_beta_points)
+        #Temperature
+        sensor_temperature_points = self.dt_controller.get_sensor_temperature_points()
+        self.sensor_temperature_curve.setData(sensor_temperature_points)
+        #Humidity
+        sensor_humidty_points = self.dt_controller.get_sensor_precipitation_points()
+        self.sensor_humidty_curve.setData(sensor_humidty_points)
 
 
 
